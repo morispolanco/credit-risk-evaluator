@@ -2,7 +2,7 @@
 # coding: utf-8
 
 # In[1]:
-pip install sklearn
+
 
 from sklearn.model_selection import train_test_split
 from sklearn.compose import ColumnTransformer
