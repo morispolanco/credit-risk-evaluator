@@ -2,9 +2,9 @@
 # coding: utf-8
 
 # In[1]:
+pip install sklearn
 
-
-#from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
 from sklearn.pipeline import FeatureUnion
