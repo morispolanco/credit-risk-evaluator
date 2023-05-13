@@ -181,7 +181,7 @@ test_accuracy = accuracy_score(Y_test, y_pred)
 # In[2]:
 
 
-with open('/Users/liqin/Desktop/knn_model2.p', 'rb') as f2:
+with open('~/Users/liqin/Desktop/knn_model2.p', 'rb') as f2:
     loaded_model = pickle.load(f2)
 st.header('Risk Predictor for Home Equity Line of Credit')
 st.text('This interface has been designed to assist banks in evaluating a client\'s Home Equity\nLine of Credit.\nThe user simply inputs the application profile values for each feature, and based on\nthe weighting of each feature, a corresponding risk level comment is provided.\nThis allows the bank to determine the probability of how low/high-risky on the\napplication and make an informed decision about whether to proceed with the application.')
