@@ -162,7 +162,9 @@ selector = SelectKBest(chi2, k=24)
 
 
 # Then proceed with the label binarization
-Y_train = LabelBinarizer().fit_transform(Y_train)
+Y_train = Y_train.astype(int)
+lb = LabelBinarizer()
+Y_train = lb.fit_transform(Y_train)
 
 
 X_train_t_selected = selector.fit_transform(X_train_t, Y_train)
