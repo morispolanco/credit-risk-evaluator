@@ -160,7 +160,6 @@ n = len(Y_train_t_tr) + len(Y_train_t_val) + len(Y_test)
 #for i in range(15,35):
 selector = SelectKBest(chi2, k=24)
 
-Y_train = Y_train.astype(int)
 
 X_train_t_selected = selector.fit_transform(X_train_t, Y_train)
 X_test_t_selected = selector.transform(X_test_t)
