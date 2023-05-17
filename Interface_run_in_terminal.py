@@ -160,8 +160,7 @@ n = len(Y_train_t_tr) + len(Y_train_t_val) + len(Y_test)
 #for i in range(15,35):
 selector = SelectKBest(chi2, k=24)
 
-#add
-Y_train
+
 # Then proceed with the label binarization
 Y_train = LabelBinarizer().fit_transform(y)
 
