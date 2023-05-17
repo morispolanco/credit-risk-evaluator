@@ -159,6 +159,9 @@ n = len(Y_train_t_tr) + len(Y_train_t_val) + len(Y_test)
 #log_reg_best.set_params(C=0.09)
 #for i in range(15,35):
 selector = SelectKBest(chi2, k=24)
+
+Y_train = Y_train.astype(int)
+
 X_train_t_selected = selector.fit_transform(X_train_t, Y_train)
 X_test_t_selected = selector.transform(X_test_t)
 log_reg_best = LogisticRegression(C=0.09, max_iter=10000, random_state=0).fit(X_train_t_selected, Y_train)
