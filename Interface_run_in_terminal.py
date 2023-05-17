@@ -3,7 +3,7 @@
 
 # In[1]:
 
-from sklearn.preprocessing import LabelBinarizer
+
 from sklearn.model_selection import train_test_split
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
@@ -173,11 +173,6 @@ log_reg_best.fit(X_train_t_selected, Y_train)
 pipeline = Pipeline([('selector', selector), ('log_reg_best', log_reg_best)])
 pipeline.fit(X_train_t_selected, Y_train)
 y_pred = pipeline.predict(X_test_t_selected)
-
-#add
-for i,x in enumerate(y_pred):
-    y_pred[i]=x.astype('int')
-
 probs = pipeline.predict_proba(X_train_t_selected)
 test_accuracy = accuracy_score(Y_test, y_pred)
 
