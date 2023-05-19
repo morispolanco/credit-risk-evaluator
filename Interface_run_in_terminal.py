@@ -103,7 +103,11 @@ Y = df.iloc[:, -1]
 Y = Y.replace({"Bad": 1, "Good": 0})
 default_probability = Y.mean()
 df_all = df
-df_all.iloc[:, -1] = Y
+
+#here
+df_all["RiskPerformance"] = Y
+
+
 df_train, df_test = train_test_split(df_all, test_size=0.2, random_state=1234)
 X_train = df_train.iloc[:, :23]
 X_test  = df_test.iloc[:, :23]
