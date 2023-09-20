@@ -182,18 +182,11 @@ test_accuracy = accuracy_score(Y_test, y_pred)
 
 
 
-
-
-input_value = [x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12, x13, x14, x15, x16, x17, x18, x19, x20, x21, x22, x23, x24]
-
-prediction = loaded_model.predict_proba([input_value])[0]
-
-
-
-
 # In[2]:
 with open('knn_model2.p','rb') as f2:
     loaded_model = pickle.load(f2)
+st.header('Risk Predictor for Home Equity Line of Credit')
+st.text('This interface has been designed to assist banks in evaluating a client\'s Home Equity\nLine of Credit.\nThe user simply inputs the application profile values for each feature, and based on\nthe weighting of each feature, a corresponding risk level comment is provided.\nThis allows the bank to determine the probability of how low/high-risky on the\napplication and make an informed decision about whether to proceed with the application.')
 
 
 # In[ ]:
@@ -226,30 +219,42 @@ with open('knn_model2.p','rb') as f2:
 x1 = st.slider('Consolidated Version of Risk Markers', 35,100,35,1)
 
 
-x1 = st.slider('Versión Consolidada de Indicadores de Riesgo', 35, 100, 35, 1)
-x2 = st.slider('Meses desde la Apertura del Comercio más Antiguo', 5, 610, 5, 1)
-x3 = st.slider('Meses desde la Apertura del Comercio más Reciente', 0, 185, 0, 1)
-x4 = st.slider('Promedio de Meses en el Archivo', 0, 260, 0, 1)
-x5 = st.slider('Número de Comercios Satisfactorios', 0, 80, 0, 1)
-x6 = st.slider('Número de Comercios con 60+ Días de Atraso', 0, 20, 0, 1)
-x7 = st.slider('Número de Comercios con 90+ Días de Atraso', 0, 20, 0, 1)
-x8 = st.slider('Porcentaje de Comercios Nunca en Atraso', 0, 100, 0, 1)
-x9 = st.slider('Meses desde el Atraso más Reciente', 0, 85, 0, 1)
-x10 = st.slider('Máximo Atraso/Registros Públicos en los Últimos 12 Meses', 0, 10, 0, 1)
-x11 = st.slider('Máximo Atraso en la Historia', 0, 10, 0, 1)
-x12 = st.slider('Número Total de Cuentas de Crédito', 0, 100, 0, 1)
-x13 = st.slider('Número de Comercios Abiertos en los Últimos 12 Meses', 0, 20, 0, 1)
-x14 = st.slider('Porcentaje de Comercios de Cuotas', 0, 100, 0, 1)
-x15 = st.slider('Meses desde la Consulta más Reciente Excluyendo 7 Días', 0, 24, 0, 1)
-x16 = st.slider('Número de Consultas en los Últimos 6 Meses', 0, 30, 0, 1)
-x17 = st.slider('Número de Consultas en los Últimos 6 Meses Excluyendo 7 Días', 0, 30, 0, 1)
-x18 = st.slider('Carga Neta de Saldo Rotativo', 0, 240, 0, 1)
-x19 = st.slider('Carga Neta de Cuotas', 0, 475, 0, 1)
-x20 = st.slider('Número de Comercios Rotativos con Saldo', 0, 24, 0, 1)
-x21 = st.slider('Número de Comercios Bancarios con Alta Tasa de Utilización', 0, 20, 0, 1)
-x22 = st.slider('Porcentaje de Comercios con Saldo', 0, 100, 0, 1)
-x23 = st.slider('Si no hay Meses desde el Atraso más Reciente', 0, 1, 0, 1)
-x24 = st.slider('Si hay Comercios o Consultas No Utilizables/Inválidos', 0, 1, 0, 1)
+x2 = st.slider('Months Since Oldest Trade Open', 5,610,5,1)
+x3 = st.slider('Months Since Most Recent Trade Open', 0,185,0,1)
+x4 = st.slider('Average Months in File', 0,260,0,1)
+x5 = st.slider('Number Satisfactory Trades', 0,80,0,1)
+x6 = st.slider('Number Trades 60+ Ever', 0,20,0,1)
+x7 = st.slider('Number Trades 90+ Ever', 0,20,0,1)
+x8 = st.slider('Percent Trades Never Delinquent', 0,100,0,1)
+x9 = st.slider('Months Since Most Recent Delinquency', 0,85,0,1)
+x10 = st.slider('Max Delq/Public Records Last 12 Months', 0,10,0,1)
+x11 = st.slider('Max Delinquency Ever', 0,10,0,1)
+x12 = st.slider('Total Number of Credit Accounts', 0,100,0,1)
+x13 = st.slider('Number of Trades Open in Last 12 Months', 0,20,0,1)
+x14 = st.slider('Percent Installment Trades', 0,100,0,1)
+x15 = st.slider('Months Since Most Recent Inquiry Excluding 7days', 0,24,0,1)
+x16 = st.slider('Number of Inquiry Last 6 Months', 0,30,0,1)
+x17 = st.slider('Number of Inquiry Last 6 Months Excluding 7days', 0,30,0,1)
+x18 = st.slider('Net Fraction Revolving Burden', 0,240,0,1)
+x19 = st.slider('Net Fraction Installment Burden', 0,475,0,1)
+x20 = st.slider('Number Revolving Trades with Balance', 0,24,0,1)
+#x21 = st.slider('NumInstallTradesWBalance', 0,20,0,1)
+
+x21 = st.slider('Number Bank Trades with High Utilization Ratio', 0,20,0,1)
+x22 = st.slider('Percent Trades with Balance', 0,100,0,1)
+x23 = st.slider('If There Is No Months Since Most Recent Delinquency', 0,1,0,1) #MSinceMostRecentDelq=-7 9
+
+
+#x25 = st.slider('MSinceMostRecentInqexcl7days=-7', 0,1,0,1)
+#x26 = st.slider('MSinceOldestTradeOpen=-8', 5.0,605.0,5.0,0.1)
+#x27 = st.slider('MSinceMostRecentDelq=-8', 5.0,605.0,5.0,0.1)
+x24 = st.slider('If There Are Non-usable/unvalid Trades or Inquiries', 0,1,0,1) #MSinceMostRecentInqexcl7days=-8 15
+#x27 = st.slider('NetFractionRevolvingBurden=-8', 0,1,0,1)
+#x28 = st.slider('NetFractionInstallBurden=-8', 0,1,0,1)
+#x29 = st.slider('NumRevolvingTradesWBalance=-8', 0,1,0,1)
+#x32 = st.slider('NumInstallTradesWBalance=-8', 5.0,605.0,5.0,0.1)
+#x30 = st.slider('NumBank2NatlTradesWHighUtilization=-8', 0,1,0,1)
+#x34 = st.slider('PercentTradesWBalance=-8', 5.0,605.0,5.0,0.1)
 
 
 
@@ -260,11 +265,13 @@ prediction = loaded_model.predict_proba([input_value])[0]
 
 
 if prediction[0] > prediction[1]:
-    st.text('Esta solicitud tiene una probabilidad del %.2f%% de ser de bajo riesgo.' % (prediction[0]*100))
+    st.text('This application has a %.2f%% probability to be low risk.' % (prediction[0]*100))
 else:
-    st.text('Esta solicitud tiene una probabilidad del %.2f%% de ser de alto riesgo.' % (prediction[1]*100))
+    st.text('This application has a %.2f%% probability to be high risk.' % (prediction[1]*100))
 
 
+
+# In[ ]:
 
 
 
